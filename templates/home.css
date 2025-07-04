@@ -1,0 +1,159 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+}
+
+/* Header and Navigation */
+.top-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.admin-dashboard a, .message-box a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.admin-dashboard a:hover, .message-box a:hover {
+    color: #007bff;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px 50px;
+    background-color: #fff;
+    margin-top: 60px;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.hero .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.hero .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Upload Section */
+.upload-section {
+    margin-top: 60px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.upload-section h3 {
+    font-size: 1.5em;
+}
+
+.upload-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    min-height: 100px;
+}
+
+.upload-section input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.upload-section button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-section button:hover {
+    background-color: #0056b3;
+}
+
+/* Post Feed Section */
+.post-feed {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #fff;
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+.post {
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.post img {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-nav ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bottom-nav li {
+    text-align: center;
+}
+
+.bottom-nav a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.bottom-nav a:hover {
+    color: #007bff;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Post | CreatorHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      padding: 20px;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-header h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      font-weight: bold;
+    }
+    .form-group input[type="file"] {
+      display: block;
+      margin: 10px 0;
+    }
+    .form-group textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #0095f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .form-group button:hover {
+      background-color: #007bb5;
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <div class="form-header">
+      <h2>Upload a New Post</h2>
+    </div>
+
+    <form id="uploadForm">
+      <!-- Caption -->
+      <div class="form-group">
+        <label for="caption">Caption:</label>
+        <textarea id="caption" name="caption" placeholder="Write a caption..." required></textarea>
+      </div>
+
+      <!-- Image File Upload -->
+      <div class="form-group">
+        <label for="file">Upload Image:</label>
+        <input type="file" id="file" name="file" accept="image/*" required>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group">
+        <button type="submit">Submit Post</button>
+      </div>
+    </form>
+
+    <div class="back-link">
+      <p><a href="home.html">Back to Home</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Handle form submission
+    document.getElementById("uploadForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+  
+      const caption = document.getElementById("caption").value;
+      const file = document.getElementById("file").files[0];
+  
+      // Create FormData to send to the backend
+      const formData = new FormData();
+      formData.append('caption', caption);
+      formData.append('file', file);
+  
+      // Send data to the backend using fetch
+      fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        // If the post is successful, redirect to home
+        if (data.success) {
+          window.location.href = "home.html";
+        } else {
+          alert("Error uploading post");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("An error occurred while uploading the post.");
+      });
+    });
+  </script>
+  
+
+</body>
+</html>

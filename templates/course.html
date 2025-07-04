@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Art Course Enrollment</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      /* Add the CSS you already have */
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+      }
+      header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 30px 50px;
+        text-align: center;
+      }
+      header .logo {
+        font-size: 28px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      /* Course Section */
+      .course-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 50px 20px;
+      }
+
+      .course-card {
+        width: 300px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+
+      .course-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .course-card h3 {
+        font-size: 24px;
+        margin: 15px 0;
+        color: #2c3e50;
+      }
+
+      .course-card p {
+        font-size: 16px;
+        color: #777;
+        padding: 0 20px;
+        margin-bottom: 20px;
+      }
+
+      .course-card .btn {
+        background-color: #ff6f61;
+        padding: 12px 30px;
+        font-size: 16px;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        transition: background-color 0.3s ease;
+      }
+
+      .course-card .btn:hover {
+        background-color: #e94e44;
+      }
+
+      /* Modal Styling */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        width: 400px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .modal-content h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .modal-content input,
+      .modal-content select,
+      .modal-content button {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      .modal-content button {
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .modal-content button:hover {
+        background-color: #e94e44;
+      }
+
+      /* Close Button */
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        color: #333;
+        cursor: pointer;
+      }
+      /* Bottom Navigation Bar */
+      .bottom-nav {
+        background-color: #333;
+        padding: 18px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .bottom-nav ul {
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .bottom-nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.1rem;
+        text-align: center;
+        transition: color 0.3s ease;
+      }
+
+      .bottom-nav a:hover {
+        color: #feb47b;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="logo">CreatorHub</div>
+    </header>
+
+    <!-- Course List Section -->
+    <section class="course-list">
+      <!-- Example Course Card -->
+      <div class="course-card">
+        <img src="post images/drawing 10.jpg" alt="Digital Painting" />
+        <h3>Digital Painting</h3>
+        <p>
+          Learn how to create stunning artwork digitally with professional tools
+          and techniques.
+        </p>
+        <button class="btn enroll-btn" data-course="Digital Painting">
+          Enroll Now
+        </button>
+      </div>
+      <!-- Additional Course Cards -->
+      <div class="course-card">
+        <img src="post images/drawing 14.jpg" alt="Portrait Drawing" />
+        <h3>Portrait Drawing</h3>
+        <p>
+          Learn the art of creating realistic and expressive portraits with
+          pencil and charcoal techniques.
+        </p>
+        <button class="btn enroll-btn" data-course="Portrait Drawing">
+          Enroll Now
+        </button>
+      </div>
+
+      <div class="course-card">
+        <img src="post images/drawing 15.jpg" alt="Abstract Art" />
+        <h3>Abstract Art</h3>
+        <p>
+          Discover the world of abstract art, where imagination and colors come
+          together to create beautiful pieces.
+        </p>
+        <button class="btn enroll-btn" data-course="Abstract Art">
+          Enroll Now
+        </button>
+      </div>
+
+      <div class="course-card">
+        <img src="post images/drawing 16.jpg" alt="Figure Drawing" />
+        <h3>Figure Drawing</h3>
+        <p>
+          Improve your figure drawing skills by learning the basics of human
+          anatomy and proportions.
+        </p>
+        <button class="btn enroll-btn" data-course="Figure Drawing">
+          Enroll Now
+        </button>
+      </div>
+
+      <div class="course-card">
+        <img src="post images/drawing 17.jpg" alt="Digital Illustration" />
+        <h3>Digital Illustration</h3>
+        <p>
+          Master the art of digital illustration using popular software tools to
+          create stunning digital art.
+        </p>
+        <button class="btn enroll-btn" data-course="Digital Illustration">
+          Enroll Now
+        </button>
+      </div>
+
+      <div class="course-card">
+        <img src="post images/drawing 18.jpg" alt="Street Art" />
+        <h3>Street Art</h3>
+        <p>
+          Dive into the world of street art, exploring techniques such as spray
+          painting and stencil art.
+        </p>
+        <button class="btn enroll-btn" data-course="Street Art">
+          Enroll Now
+        </button>
+      </div>
+
+      <div class="course-card">
+        <img src="post images/drawing 19.jpg" alt="Clay Sculpting" />
+        <h3>Clay Sculpting</h3>
+        <p>
+          Learn the fundamentals of sculpting with clay and create beautiful 3D
+          art pieces from scratch.
+        </p>
+        <button class="btn enroll-btn" data-course="Clay Sculpting">
+          Enroll Now
+        </button>
+      </div>
+
+      <div class="course-card">
+        <img src="post images/drawing 20.jpg" alt="Photography Basics" />
+        <h3>Photography Basics</h3>
+        <p>
+          Learn the basics of photography, from camera settings to composition
+          techniques, to capture stunning images.
+        </p>
+        <button class="btn enroll-btn" data-course="Photography Basics">
+          Enroll Now
+        </button>
+      </div>
+
+      <div class="course-card">
+        <img src="post images/drawing 21.jpg" alt="Fashion Illustration" />
+        <h3>Fashion Illustration</h3>
+        <p>
+          Explore the world of fashion design through illustration, learning how
+          to draw fashionable garments and figures.
+        </p>
+        <button class="btn enroll-btn" data-course="Fashion Illustration">
+          Enroll Now
+        </button>
+      </div>
+
+      <div class="course-card">
+        <img src="post images/drawing 22.jpg" alt="Printmaking Techniques" />
+        <h3>Printmaking Techniques</h3>
+        <p>
+          Learn various printmaking methods, such as linocut, woodcut, and
+          screen printing, to create unique prints.
+        </p>
+        <button class="btn enroll-btn" data-course="Printmaking Techniques">
+          Enroll Now
+        </button>
+      </div>
+
+      <div class="course-card">
+        <img src="post images/drawing 23.jpg" alt="Art History" />
+        <h3>Art History</h3>
+        <p>
+          Explore the history of art, from ancient civilizations to modern
+          movements, and discover the evolution of art styles.
+        </p>
+        <button class="btn enroll-btn" data-course="Art History">
+          Enroll Now
+        </button>
+      </div>
+
+      <!-- More Course Cards... -->
+    </section>
+
+    <!-- Modal for Enrollment Form -->
+    <div class="modal" id="enrollModal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Enroll in <span id="courseName">Course</span></h2>
+        <form id="enrollForm">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="email" id="email" placeholder="Your Email" required />
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Your Phone Number"
+            required
+          />
+          <button type="submit">Submit Enrollment</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+      <ul>
+        <li>
+          <a href="home.html"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="explore.html"><i class="fas fa-compass"></i> Explore</a>
+        </li>
+        <li>
+          <a href="job.html"><i class="fas fa-briefcase"></i> Jobs</a>
+        </li>
+        <li>
+          <a href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
+        </li>
+        <li>
+          <a href="course.html"><i class="fas fa-trophy"></i> Course</a>
+        </li>
+        <li>
+          <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+        </li>
+      </ul>
+    </nav>
+
+    <script>
+      // Modal functionality for Enroll Now buttons
+      const enrollButtons = document.querySelectorAll(".enroll-btn");
+      const modal = document.getElementById("enrollModal");
+      const closeModal = document.getElementById("closeModal");
+      const courseName = document.getElementById("courseName");
+      const enrollForm = document.getElementById("enrollForm");
+
+      enrollButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const course = button.getAttribute("data-course");
+          courseName.textContent = course;
+          modal.style.display = "flex";
+        });
+      });
+
+      closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      enrollForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const course = courseName.textContent;
+
+        const enrollmentData = { name, email, phone, course };
+
+        try {
+          const response = await fetch("http://localhost:3000/api/enroll", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(enrollmentData),
+          });
+
+          const result = await response.json();
+          if (response.status === 200) {
+            alert("Thank you for enrolling!");
+          } else {
+            alert(result.message || "There was an error.");
+          }
+          modal.style.display = "none";
+        } catch (error) {
+          alert(
+            "There was an error submitting your enrollment. Please try again later."
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

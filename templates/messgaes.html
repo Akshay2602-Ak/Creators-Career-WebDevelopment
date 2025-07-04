@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+
+    /* Header Section */
+    header {
+      background: linear-gradient(135deg, #f04f7b, #ff9a8b);
+      color: white;
+      padding: 12px 15px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    header .fas {
+      font-size: 20px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    header .fas:hover {
+      color: #feb47b;
+    }
+
+    /* Chat List Container */
+    .message-list {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      overflow-y: auto;
+      max-height: 550px;
+    }
+
+    /* Individual Chat Item */
+    .message-item {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .message-item:hover {
+      background-color: #f9f9f9;
+      transform: translateX(10px);
+    }
+
+    .message-item:last-child {
+      border-bottom: none;
+    }
+
+    .profile-img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+      border: 2px solid #ff9a8b;
+    }
+
+    .message-info {
+      flex-grow: 1;
+    }
+
+    .message-info h4 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .message-info h4:hover {
+      color: #f04f7b;
+    }
+
+    .message-info p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 8px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .message-info .time {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    /* New Message Indicator */
+    .new-message {
+      width: 12px;
+      height: 12px;
+      background-color: #ff9a8b;
+      border-radius: 50%;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    /* Hovered icon effect */
+    .message-item:hover .message-info h4 {
+      color: #f04f7b;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Direct Messages</h1>
+    <i class="fas fa-search"></i>
+  </header>
+
+  <!-- Message List -->
+  <div class="message-list">
+
+    <!-- Message Item 1 -->
+    <div class="message-item">
+      <img src="Profile images/prasanna.jpg" alt="User 1" class="profile-img">
+      <div class="message-info">
+        <h4>Prasanna</h4>
+        <p>Hey, I just wanted to check in with you! Let me know...</p>
+        <div class="time">5m ago</div>
+      </div>
+      <div class="new-message"></div>
+    </div>
+
+    <!-- Message Item 2 -->
+    <div class="message-item">
+      <img src="Profile images/prasanna.jpg" alt="User 2" class="profile-img">
+      <div class="message-info">
+        <h4>Dakshesh</h4>
+        <p>Let's meet up tomorrow and discuss the project details.</p>
+        <div class="time">1h ago</div>
+      </div>
+    </div>
+
+    <!-- Message Item 3 -->
+    <div class="message-item">
+      <img src="Profile images/prasanna.jpg" alt="User 3" class="profile-img">
+      <div class="message-info">
+        <h4>Gokul</h4>
+        <p>Can you send me the details for the meeting tomorrow?</p>
+        <div class="time">2h ago</div>
+      </div>
+    </div>
+
+    <!-- Message Item 4 -->
+    <div class="message-item">
+      <img src="Profile images/prasanna.jpg" alt="User 4" class="profile-img">
+      <div class="message-info">
+        <h4>Aswin</h4>
+        <p>Just got the new updates, let's discuss them later.</p>
+        <div class="time">4h ago</div>
+      </div>
+    </div>
+
+    <!-- Message Item 5 -->
+    <div class="message-item">
+      <img src="Profile images/prasanna.jpg" alt="User 5" class="profile-img">
+      <div class="message-info">
+        <h4>charles</h4>
+        <p>Hey, are you free for a call about the project?</p>
+        <div class="time">6h ago</div>
+      </div>
+    </div>
+    <!-- Message Item 6 -->
+    <div class="message-item">
+        <img src="Profile images/prasanna.jpg" alt="User 5" class="profile-img">
+        <div class="message-info">
+          <h4>Dhanush</h4>
+          <p>Hey, are you free for a call about the project?</p>
+          <div class="time">6h ago</div>
+        </div>
+    </div>
+    <!-- Message Item 7 -->
+    <div class="message-item">
+        <img src="Profile images/prasanna.jpg" alt="User 5" class="profile-img">
+        <div class="message-info">
+          <h4>Surya</h4>
+          <p>Hey, are you free for a call about the project?</p>
+          <div class="time">6h ago</div>
+        </div>
+    </div>
+    <!-- Message Item 8 -->
+    <div class="message-item">
+        <img src="Profile images/prasanna.jpg" alt="User 5" class="profile-img">
+        <div class="message-info">
+          <h4>Naresh</h4>
+          <p>Hey, are you free for a call about the project?</p>
+          <div class="time">6h ago</div>
+        </div>
+    </div>
+    <!-- Message Item 9 -->
+    <div class="message-item">
+        <img src="Profile images/prasanna.jpg" alt="User 5" class="profile-img">
+        <div class="message-info">
+          <h4>Prem richard</h4>
+          <p>Hey, are you free for a call about the project?</p>
+          <div class="time">6h ago</div>
+        </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

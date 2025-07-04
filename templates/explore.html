@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreatorHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1560321463-4059ecdb9c94?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhY3J8MHx8Y3JlYXRpdmVzfGVufDB8fHx8fDE2NDI1MDQwNjQ&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            z-index: 1;
+            animation: gradientAnimation 5s ease-in-out infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-color: rgba(255, 126, 95, 0.7); }
+            50% { background-color: rgba(254, 180, 123, 0.7); }
+            100% { background-color: rgba(255, 126, 95, 0.7); }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+            animation-delay: 1.5s;
+        }
+
+        .btn-primary {
+            margin-top: 30px;
+            padding: 15px 40px;
+            background-color: #ff7e5f;
+            color: white;
+            border-radius: 50px;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #feb47b;
+            transform: scale(1.1);
+        }
+
+        /* Explore Section */
+        .explore-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            text-align: center;
+        }
+
+        .explore-section h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .explore-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #ddd;
+        }
+
+        /* Grid Layout for Explore Cards */
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .explore-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            cursor: pointer;
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .explore-container:hover {
+            transform: translateY(-10px) rotateY(15deg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .explore-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .explore-container:hover img {
+            transform: scale(1.05);
+            opacity: 0.85;
+        }
+
+        .explore-content {
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .explore-container:hover .explore-content {
+            opacity: 1;
+        }
+
+        .explore-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .explore-content p {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .explore-content a {
+            font-size: 1.1rem;
+            color: #ff7e5f;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .explore-content a:hover {
+            color: #feb47b;
+            text-decoration: underline;
+        }
+
+        /* Bottom Navigation Bar */
+        .bottom-nav {
+            background-color: #333;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .bottom-nav ul {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bottom-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .bottom-nav a:hover {
+            color: #feb47b;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #212121;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .explore-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .explore-section p {
+                font-size: 1.1rem;
+            }
+
+            .explore-grid {
+                grid-template-columns: 1fr 1fr;
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .explore-section h2 {
+                font-size: 2rem;
+            }
+
+            .explore-section p {
+                font-size: 1rem;
+            }
+
+            .explore-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Full Page Hero Section -->
+    <section class="hero">
+        <h1>Welcome to CreatorHub</h1>
+        <p>Explore the world's most talented creators and their stunning content.</p>
+        <a href="#explore" class="btn-primary">Start Exploring</a>
+    </section>
+
+    <!-- Explore Section -->
+    <section id="explore" class="explore-section">
+        <h2>Discover Creators</h2>
+        <p>Browse trending creators, innovative designs, and creative content across various categories.</p>
+
+        <div class="explore-grid">
+            <!-- Explore Cards -->
+            <div class="explore-container">
+                <img src="post images/creators4.png" alt="Trending Creators">
+                <div class="explore-content">
+                    <h3>Trending Creators</h3>
+                    <p>Discover the creators who are making waves in the creative world right now.</p>
+                    <a href="seemore.html">See More</a>
+                </div>
+            </div>
+
+            <div class="explore-container">
+                <img src="post images/design3.jpg" alt="Design">
+                <div class="explore-content">
+                    <h3>Design</h3>
+                    <p>Get inspired by the latest in design, artwork, and creative graphics.</p>
+                    <a href="seemore.html">See More</a>
+                </div>
+            </div>
+
+            <div class="explore-container">
+                <img src="post images/photography.jpg" alt="Photography">
+                <div class="explore-content">
+                    <h3>Photography</h3>
+                    <p>Explore breathtaking photography and visual storytelling.</p>
+                    <a href="seemore.html">See More</a>
+                </div>
+            </div>
+
+            <!-- Container 4 -->
+            <div class="explore-container">
+                <img src="post images/drawing 21.jpg" alt="Drawing">
+                <div class="explore-content">
+                    <h3>Drawing</h3>
+                    <p>Explore creative drawings and illustrations by talented artists.</p>
+                    <a href="seemore.html">See More</a>
+                </div>
+            </div>
+
+            <!-- Container 5 -->
+            <div class="explore-container">
+                <img src="post images/painting2.jpg" alt="Paintings">
+                <div class="explore-content">
+                    <h3>Paintings</h3>
+                    <p>Stay updated with the latest painting techniques and artwork trends.</p>
+                    <a href="seemore.html">See More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+        </div>
+    </section>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="explore.html"><i class="fas fa-compass"></i> Explore</a></li>
+            <li><a href="job.html"><i class="fas fa-briefcase"></i> Jobs</a></li>
+            <li><a href="settings.html"><i class="fas fa-cogs"></i> Settings</a></li>
+            <li><a href="course.html"><i class="fas fa-trophy"></i> Course</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+    </nav>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CreatorHub. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

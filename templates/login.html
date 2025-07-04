@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CreatorHub</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // JavaScript function to handle form submission and redirection
+        function redirectToHome(event) {
+            event.preventDefault();  // Prevent form from submitting normally
+            // Here you can add your authentication logic if needed (e.g., validate user credentials)
+            window.location.href = 'home.html';  // Redirect to home.html page
+        }
+    </script>
+    <style>
+        /* Global Styles */
+         body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0 20px;
+        } 
+
+        /* Main container holding form and image */
+         .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1100px;
+            width: 100%;
+            height: 80%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        } 
+
+        /* Form Styles */
+        .form-container {
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align the form content */
+            justify-content: center;
+        }
+
+        .form-container h2 {
+            font-size: 26px;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;         /* Center align the header text */
+        }
+
+        .form-container label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 500;
+            width: 100%;
+            text-align: left;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #e4e4e4;
+            font-size: 14px;
+            color: #333;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-container input:focus {
+            border-color: #0095f6;
+            outline: none;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0095f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #007bb5;
+        }
+
+        .form-container p {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #333;
+            text-align: center; /* Center align the text */
+        }
+
+        .form-container a {
+            color: #0095f6;
+            text-decoration: none;
+        }
+
+        .form-container a:hover {
+            color: #007bb5;
+        }
+
+        /* Image Container */
+        .image-container {
+            width: 50%;
+            height: 10%;
+            background-image: url('https://via.placeholder.com/500'); /*Replace with your own image URL*/
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+            }
+
+             .form-container, .image-container {
+                width: 100%;
+                margin-bottom: 20px;
+            } 
+
+            .image-container {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div class="form-container">
+            <h2>Welcome Back</h2>
+            <form id="loginForm" onsubmit="redirectToHome(event)" action="/login" method="POST">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+        </div>
+
+        <!-- Right Side Image -->
+        <div class="image-container"></div>
+    </div>
+</body>
+</html>

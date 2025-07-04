@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Explore Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: white;
+            border-bottom: 1px solid #dbdbdb;
+        }
+
+        .header .logo img {
+            height: 30px;
+        }
+
+        .search-bar input {
+            width: 200px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #dbdbdb;
+        }
+
+        .explore-container {
+            padding: 20px;
+        }
+
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .post img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .post-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .post-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="search-bar">
+            <input type="text" placeholder="Search" id="search-input">
+        </div>
+    </header>
+
+    <!-- Main Explore Content -->
+    <div class="explore-container">
+        <div class="post-grid">
+            <!-- Example of Posts -->
+            <div class="post">
+                <img src="post images/drawing 1.jpg" alt="Post 1">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 2.jpg" alt="Post 2">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 3.jpg" alt="Post 3">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 4.jpg" alt="Post 4">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 5.jpg" alt="Post 5">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 6.jpg" alt="Post 6">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 7.jpg" alt="Post 7">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 8.jpg" alt="Post 8">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 9.jpg" alt="Post 9">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 10.jpg" alt="Post 10">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 11.jpg" alt="Post 11">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 12.jpg" alt="Post 12">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 13.jpg" alt="Post 13">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 14.jpg" alt="Post 14">
+            </div>
+            <div class="post">
+                <img src="post images/drawing 15.jpg" alt="Post 15">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input');
+
+            // Handle search input
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase();
+                console.log('Search Query:', query);
+                // Here, you can add the functionality to filter posts based on the query
+            });
+
+            // Optional: Add infinite scroll functionality for loading more posts dynamically
+            window.addEventListener('scroll', () => {
+                if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+                    console.log('Load more posts...');
+                    // Add logic to load more posts dynamically
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
