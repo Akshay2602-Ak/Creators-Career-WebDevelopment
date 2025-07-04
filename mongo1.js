@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // MongoDB connection URI
-const uri = 'mongodb://127.0.0.1:27017/mydb';  // Replace 'mydatabase' with your database name
+const uri = 'mongodb+srv://admin-Ak:2602@cluster-ak.yz0a5lc.mongodb.net/mydatabase?retryWrites=true&w=majority&appName=Cluster-AK';  // Replace 'mydatabase' with your database name
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
