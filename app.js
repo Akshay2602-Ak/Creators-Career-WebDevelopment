@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 
 
 // Connect to MongoDB using Mongoose
-mongoose.connect('mongodb://127.0.0.1:27017/mydatabase', {
+mongoose.connect('mongodb+srv://admin-Ak:2602@cluster-ak.yz0a5lc.mongodb.net/mydatabase?retryWrites=true&w=majority&appName=Cluster-AK', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
